@@ -1,0 +1,24 @@
+package TestRunner;
+
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+import org.junit.runner.RunWith;
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+
+        features = {"src/test/resources/Feature/SkyScanner/"},
+        glue = {"StepDefinition"},
+        tags = ("@BookTicket"),
+        monochrome = true,
+        dryRun = false ,
+        plugin = {"pretty"}
+
+)
+
+public class TestRunner {
+   
+}
