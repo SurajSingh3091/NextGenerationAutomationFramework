@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {
 
-    private ExecutionContext executionContext;
+    public ExecutionContext executionContext;
 
     // Page instances
     private Login_Page loginPage;

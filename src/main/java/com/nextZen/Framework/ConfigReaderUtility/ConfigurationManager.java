@@ -3,6 +3,7 @@ package com.nextZen.Framework.ConfigReaderUtility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,6 +14,7 @@ public class ConfigurationManager {
     private static String projectLocation;
     private static Properties properties;
     Logger logger = LogManager.getLogger(ConfigurationManager.class);
+
 
     public void loadPropertyFile(String fileName, String resourceScope) {
         projectLocation = System.getProperty("user.dir");

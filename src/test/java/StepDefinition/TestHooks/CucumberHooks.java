@@ -6,7 +6,7 @@ import io.cucumber.java.Before;
 
 public class CucumberHooks {
 
-  private final ExecutionContext executionContext;
+  public ExecutionContext executionContext;
   
     public CucumberHooks(ExecutionContext context){
         this.executionContext= context;

@@ -18,7 +18,7 @@ setTimeout(() => { debugger; }, 10000);
 */
 public class DriverManager {
 
-    private ExecutionContext executionContext;
+    public  ExecutionContext executionContext;
     public WebDriver driver;
     public SeleniumHelper seleniumHelper;
     public String browser;
@@ -26,7 +26,10 @@ public class DriverManager {
 
     Logger logger = LogManager.getLogger(DriverManager.class);
 
-    public DriverManager(ExecutionContext context) {
+    public DriverManager() {
+    }
+
+    public void setExecutionContext(ExecutionContext context) {
         this.executionContext = context;
     }
 

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class Home_Page extends PageInitializer {
-    ExecutionContext executionContext;
+    public ExecutionContext executionContext;
     SeleniumHelper seleniumHelper;
     Logger logger = LogManager.getLogger(Home_Page.class);
 
@@ -33,8 +33,6 @@ public class Home_Page extends PageInitializer {
     public void clickAddButton() {
         seleniumHelper.clickWebElement("ADD", addButtonOnPIMPage);
     }
-
-
 
 
 }

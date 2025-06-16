@@ -5,8 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class PageInitializer {
 
-
-    protected WebDriver driver;
+    WebDriver driver;
 
     public PageInitializer(WebDriver driver) {
         this.driver = driver;

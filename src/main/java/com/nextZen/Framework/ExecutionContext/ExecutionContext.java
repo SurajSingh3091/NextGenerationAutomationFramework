@@ -8,27 +8,32 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ExecutionContext {
-    private static final Logger log = LogManager.getLogger(ExecutionContext.class);
-    private final DriverManager driverManager;
+    Logger log = LogManager.getLogger(ExecutionContext.class);
+    private DriverManager driverManager;
     private PageObjectManager pageObjectManager;
-    private final ConfigurationManager configurationManager;
+    private  ConfigurationManager configurationManager;
     private SeleniumHelper seleniumHelper;
 
     public ExecutionContext() {
-        driverManager = new DriverManager(this);
-        configurationManager = new ConfigurationManager();
+        driverManager = new DriverManager();
+        driverManager.setExecutionContext(this);
     }
+
 
     public DriverManager getDriverManager() {
         return driverManager;
     }
 
     public ConfigurationManager getConfigurationManager() {
+        if (configurationManager == null) {
+            configurationManager = new ConfigurationManager();
+        }
+
         return configurationManager;
     }
 
     //Lazy Loading of the classes which is not required at boot time.
-    //get selenium helper
+
     public SeleniumHelper getSeleniumHelper() {
         if (seleniumHelper == null) {
             seleniumHelper = new SeleniumHelper(this);
@@ -43,8 +48,6 @@ public class ExecutionContext {
         }
         return pageObjectManager;
     }
-
-
 
 
 }

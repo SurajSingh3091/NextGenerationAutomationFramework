@@ -20,6 +20,7 @@ public class StepDefinition {
     public void user_clicks_on_category_then_user_is_navigated_to_home_page_of_the_category(String category) {
         executionContext.getPageObjectManager().getHomePage().clickCategoryLink(category, category);
         executionContext.getSeleniumHelper().waitForPageLoad();
+
         if (executionContext.getPageObjectManager().getApplicationMasterPage().isElementOnHomepageDisplayed(category)) {
             logger.info("Successfully Navigated to " + category + " home Page");
         } else {
@@ -30,7 +31,7 @@ public class StepDefinition {
     @When("User clicks on Add button he should be navigated to Add Employee home page")
     public void user_clicks_on_add_button_he_should_be_navigated_to_add_employee_home_page() {
         executionContext.getPageObjectManager().getHomePage().clickAddButton();
-        executionContext.getSeleniumHelper().waitForPageLoad();
+        executionContext.getSeleniumHelper().waitForAJAX();
         if (executionContext.getPageObjectManager().getApplicationMasterPage().isElementOnHomepageDisplayed("Add Employee")) {
             logger.info("Successfully Navigated to Add Employee Page");
         } else {
@@ -64,9 +65,9 @@ public class StepDefinition {
     }
 
     @Then("User captures personal details of employee like drivers license number as {string} license expiry date as {string} nationality as {string} marital status as {string} date of birth as {string} gender as {string}")
-    public void user_captures_personal_details_of_employee_like_drivers_license_number_as_license_expiry_date_as_nationality_as_marital_status_as_date_of_birth_as_gender_as(String drivingLicense, String licenceExpiryDate, String nationality, String maritalStatus, String dob, String gender) {
-       executionContext.getPageObjectManager().getAddEmployeePage().captureDriverLicense(drivingLicense);
-       executionContext.getPageObjectManager().getAddEmployeePage().captureDriverLicenseExpiryDate(licenceExpiryDate);
+    public void user_captures_personal_details_of_employee_like_drivers_license_number_as_license_expiry_date_as_nationality_as_marital_status_as_date_of_birth_as_gender_as(String drivingLicense, String licenceExpiryDate, String nationality, String maritalStatus, String dob, String gender) {executionContext.getPageObjectManager().getAddEmployeePage().captureDriverLicense(drivingLicense);
+        executionContext.getSeleniumHelper().waitForPageLoad();
+        executionContext.getPageObjectManager().getAddEmployeePage().captureDriverLicenseExpiryDate(licenceExpiryDate);
        executionContext.getPageObjectManager().getAddEmployeePage().selectNationality(nationality);
        executionContext.getPageObjectManager().getAddEmployeePage().selectGender(gender);
        executionContext.getPageObjectManager().getAddEmployeePage().selectMaritalStatus(maritalStatus);
@@ -76,7 +77,7 @@ public class StepDefinition {
     @Then("User clicks on contact details link")
     public void user_clicks_on_contact_details_link() {
       executionContext.getPageObjectManager().getAddEmployeePage().clickContactDetails();
-      executionContext.getSeleniumHelper().waitForPageLoad();
+      executionContext.getSeleniumHelper().waitForAJAX();
         if (executionContext.getPageObjectManager().getApplicationMasterPage().isElementOnHomepageDisplayed("Contact Details")) {
             logger.info("Successfully Navigated to Contact Details Page");
         } else {

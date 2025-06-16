@@ -15,7 +15,7 @@ import java.util.List;
 
 
 public class SeleniumHelper {
-    private ExecutionContext executionContext;
+    public  ExecutionContext executionContext;
     private final WebDriverWait webDriverWait;
    Logger logger = LogManager.getLogger(SeleniumHelper.class);
     /**

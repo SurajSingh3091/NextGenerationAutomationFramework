@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AddEmployee_Page extends PageInitializer {
-    ExecutionContext executionContext;
+    public ExecutionContext executionContext;
     SeleniumHelper seleniumHelper;
     Logger logger = LogManager.getLogger(Home_Page.class);
 
@@ -145,7 +145,7 @@ public class AddEmployee_Page extends PageInitializer {
 
     public void selectCountry(String country) {
         seleniumHelper.clickWebElement("Country Dropdown Icon", countryDropDownIcon);
-        WebElement nationalityWebElement = dropDownValue.findElement(By.xpath("span[text()='" + nationality + "']"));
+        WebElement nationalityWebElement = dropDownValue.findElement(By.xpath("span[text()='" + country + "']"));
         seleniumHelper.clickWebElement("Country", nationalityWebElement);
         logger.info("Successfully selected Country");
     }

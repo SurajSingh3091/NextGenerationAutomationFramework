@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class Login_Page extends PageInitializer {
 
-    ExecutionContext executionContext;
+    public ExecutionContext executionContext;
 
     Logger logger = LogManager.getLogger(Login_Page.class);
 

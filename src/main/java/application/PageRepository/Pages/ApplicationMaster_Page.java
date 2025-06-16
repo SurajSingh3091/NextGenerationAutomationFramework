@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ApplicationMaster_Page extends PageInitializer {
-    private ExecutionContext executionContext;
+    public ExecutionContext executionContext;
     private SeleniumHelper seleniumHelper;
     Logger logger = LogManager.getLogger(ApplicationMaster_Page.class);
 
