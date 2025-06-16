@@ -10,11 +10,11 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        features = {"src/test/resources/Feature/SkyScanner/"},
+        features = {"src/test/resources/Feature/OrangeHRM/"},
         glue = {"StepDefinition"},
-        tags = ("@BookTicket"),
+        tags = ("@AddEmployee"),
         monochrome = true,
-        dryRun = false ,
+        dryRun = true ,
         plugin = {"pretty"}
 
 )

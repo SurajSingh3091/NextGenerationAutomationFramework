@@ -1,9 +1,10 @@
 package com.nextZen.Framework.Base;
 
-import com.nextZen.Framework.ConfigReaderUtility.ConfigurationManager;
-import com.nextZen.Framework.Context.ExecutionContext;
+import com.nextZen.Framework.ExecutionContext.ExecutionContext;
 import com.nextZen.Framework.WebUtility.SeleniumHelper;
-import com.nextZen.Framework.LoggerUtility.Log;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +13,9 @@ import org.openqa.selenium.edge.EdgeOptions;
 
 import java.util.Collections;
 
+/* Debugger for 10 seconds
+setTimeout(() => { debugger; }, 10000);
+*/
 public class DriverManager {
 
     private ExecutionContext executionContext;
@@ -19,6 +23,8 @@ public class DriverManager {
     public SeleniumHelper seleniumHelper;
     public String browser;
     public String url;
+
+    Logger logger = LogManager.getLogger(DriverManager.class);
 
     public DriverManager(ExecutionContext context) {
         this.executionContext = context;
@@ -39,7 +45,7 @@ public class DriverManager {
         };
         driver.get(url);
         driver.manage().window().maximize();
-        Log.info("Successfully launched the URL : " + url + " on Browser : " + browser);
+        logger.info("Successfully launched the URL : " + url + " on Browser : " + browser);
         executionContext.getSeleniumHelper().waitForPageLoad();
     }
 
@@ -56,7 +62,7 @@ public class DriverManager {
         );
         // "--disable-infobars" this property is deprecated now so using below method to remove the banner
         chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-        Log.info("Following chrome options are set:\n"
+        logger.info("Following chrome options are set:\n"
                 + "--start-maximized\n"
                 + "--disable-extensions\n"
                 + "--disable-popup-blocking\n"
@@ -79,7 +85,7 @@ public class DriverManager {
         );
         // "--disable-infobars" this property is deprecated now so using below method to remove the banner
         edgeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-        Log.info("Following edge options are set:\n"
+        logger.info("Following edge options are set:\n"
                 + "--start-maximized\n"
                 + "--disable-extensions\n"
                 + "--disable-popup-blocking\n"
@@ -97,13 +103,13 @@ public class DriverManager {
     public void killDriverInstance() {
         try {
             driver.quit();
-            Log.info("Successfully quit the browser instance.");
+            logger.info("Successfully quit the browser instance.");
         } catch (Exception exception) {
-            Log.info("Unable to quit the driver instance!");
+            logger.info("Unable to quit the driver instance!");
         } finally {
             if (driver != null) {
                 driver.quit();
-                Log.info("Successfully quit the browser instance, in Finally block.");
+                logger.info("Successfully quit the browser instance, in Finally block.");
             }
 
         }
